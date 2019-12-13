@@ -1,18 +1,13 @@
 // @flow
 
 import React from "react";
-import { fetchMainPosts } from "../api/api";
+import Top from "./Top";
 
 function App() {
-    const [posts, setPosts] = React.useState(null);
-    const [story, setStory] = React.useState("top");
-    React.useEffect(() => {
-        fetchMainPosts(story).then(posts => setPosts(posts));
-    }, [story]);
     return (
         <div>
             <h1>Hacker News Clone</h1>
-            {posts && <p>{JSON.stringify(posts)}</p>}
+            <Top />
         </div>
     );
 }
