@@ -1,14 +1,32 @@
+// @flow
+
 import React from "react";
-import { fetchMainPosts } from "../api/api";
+import usePosts from "../customHooks/usePosts";
 
 function Top() {
-    const [posts, setPosts] = React.useState(null);
-    const story = "top";
+    const posts = usePosts("top");
 
-    React.useEffect(() => {
-        fetchMainPosts(story).then(posts => setPosts(posts));
-    }, []);
-    return posts ? <p>{JSON.stringify(posts)}</p> : null;
+    if (!posts) {
+        return <h1>Loading</h1>;
+    }
+
+    return (
+        <ul>
+            {posts.map(post => {
+                const { title, by, time, url, descendants } = post;
+                return (
+                    <li>
+                        <a href={url}>
+                            <p>{title}</p>
+                            <p>
+                                by {by} on {time}, with {descendants} comments
+                            </p>
+                        </a>
+                    </li>
+                );
+            })}
+        </ul>
+    );
 }
 
 export default Top;
