@@ -1,14 +1,14 @@
 // @flow
 
 import React from "react";
-import Top from "./Top";
-import New from "./New";
+
+import Posts from "./Posts";
 
 function App() {
     return (
         <div>
             <h1>Hacker News Clone</h1>
-            <Top />
+            <Posts type="top" />
         </div>
     );
 }
