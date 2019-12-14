@@ -5,10 +5,14 @@ import usePosts from "../customHooks/usePosts";
 import Story from "./Story";
 
 function New() {
-    const posts = usePosts("new");
+    const [posts, error] = usePosts("new");
+
+    if (error !== null) {
+        return <p>There was an error in fetching the posts</p>;
+    }
 
     if (!posts) {
-        return <h1>Loading</h1>;
+        return <p>Loading</p>;
     }
 
     return (

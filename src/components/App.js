@@ -8,7 +8,7 @@ function App() {
     return (
         <div>
             <h1>Hacker News Clone</h1>
-            <New />
+            <Top />
         </div>
     );
 }
