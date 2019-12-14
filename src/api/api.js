@@ -7,7 +7,7 @@ function removeDead(posts) {
     return posts.filter(Boolean).filter(({ dead }) => dead !== true);
 }
 
-function removeDeleted(posts): Object {
+function removeDeleted(posts): Array<Object> {
     return posts.filter(({ deleted }) => deleted !== true);
 }
 
