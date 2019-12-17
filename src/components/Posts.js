@@ -1,6 +1,8 @@
 // @flow
 
 import React from "react";
+import { Link } from "react-router-dom";
+
 import { fetchMainPosts } from "../api/api";
 
 type Props = {
@@ -35,10 +37,19 @@ function Posts({ type }: Props) {
                 <li key={title + by}>
                     <a href={url}>
                         <p>{title}</p>
-                        <p>
-                            by {by} on {time}, with {descendants} comments
-                        </p>
                     </a>
+                    <p>
+                        by{" "}
+                        <Link
+                            to={{
+                                pathname: "/user",
+                                search: `id=${by}`,
+                            }}
+                        >
+                            {by}
+                        </Link>{" "}
+                        on {time}, with {descendants} comments
+                    </p>
                 </li>
             ))}
         </ul>
