@@ -19,8 +19,12 @@ function App() {
                     </li>
                 </ul>
                 <Switch>
-                    <Route exact path="/" render={() => <Posts type="top" />} />
-                    <Route path="/new" render={() => <Posts type="new" />} />
+                    <Route exact path="/">
+                        <Posts type="top" />
+                    </Route>
+                    <Route exact path="/new">
+                        <Posts type="new" />
+                    </Route>
                 </Switch>
             </div>
         </Router>
