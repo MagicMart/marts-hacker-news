@@ -24,7 +24,8 @@ export function useFetchUser(location) {
     React.useEffect(() => {
         const user = location.search.split("=")[1];
         fetchUser(user).then(data => setUserInfo(data));
-    });
+        return () => setUserInfo(null);
+    }, [location]);
 
     return userInfo;
 }
