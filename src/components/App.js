@@ -4,6 +4,7 @@ import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
 import Posts from "./Posts";
+import User from "./User";
 
 function App() {
     return (
@@ -24,6 +25,9 @@ function App() {
                     </Route>
                     <Route exact path="/new">
                         <Posts type="new" />
+                    </Route>
+                    <Route exact path="/user">
+                        <User />
                     </Route>
                 </Switch>
             </div>
