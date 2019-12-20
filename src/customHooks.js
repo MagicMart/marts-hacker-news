@@ -1,7 +1,8 @@
 import React from "react";
-import { fetchMainPosts, fetchUser } from "./api/api";
+import { fetchMainPosts, fetchUser, fetchPosts } from "./api/api";
 
 export function useFetchMainPosts(type) {
+    console.log("useFetchMainPosts");
     const [posts, setPosts] = React.useState(null);
     const [error, setError] = React.useState(null);
 
@@ -19,6 +20,7 @@ export function useFetchMainPosts(type) {
 }
 
 export function useFetchUser(location) {
+    console.log("useFetchUser");
     const [userInfo, setUserInfo] = React.useState(null);
 
     React.useEffect(() => {
@@ -28,4 +30,15 @@ export function useFetchUser(location) {
     }, [location]);
 
     return userInfo;
+}
+
+export function useFetchPosts(ids) {
+    console.log("useFetchPosts");
+    const [posts, setPosts] = React.useState(null);
+
+    React.useEffect(() => {
+        fetchPosts(ids).then(data => setPosts(data));
+        return () => setPosts(null);
+    }, [ids]);
+    return posts;
 }

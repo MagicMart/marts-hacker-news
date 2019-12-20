@@ -1,6 +1,15 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useFetchUser } from "../customHooks.js";
+import { useFetchUser, useFetchPosts } from "../customHooks.js";
+import PostsList from "./PostsList";
+
+function UserPosts(props) {
+    const posts = useFetchPosts(props.ids);
+    if (!posts) {
+        return <div>Loading</div>;
+    }
+    return <PostsList posts={posts} />;
+}
 
 function User(props) {
     const location = useLocation();
@@ -24,6 +33,7 @@ function User(props) {
             <p>
                 joined {created} has {karma} karma
             </p>
+            <UserPosts ids={submitted} />
         </div>
     );
 }
