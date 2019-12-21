@@ -3,9 +3,9 @@
 import React from "react";
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
-import Posts from "./Posts";
+import PostsType from "./PostsType";
 import User from "./User";
-import Comments from "./Comments";
+import PostWithComments from "./PostWithComments";
 
 function App() {
     return (
@@ -22,16 +22,16 @@ function App() {
                 </ul>
                 <Switch>
                     <Route exact path="/">
-                        <Posts type="top" />
+                        <PostsType type="top" />
                     </Route>
                     <Route exact path="/new">
-                        <Posts type="new" />
+                        <PostsType type="new" />
                     </Route>
                     <Route exact path="/user">
                         <User />
                     </Route>
                     <Route exact path="/posts">
-                        <Comments />
+                        <PostWithComments />
                     </Route>
                 </Switch>
             </div>

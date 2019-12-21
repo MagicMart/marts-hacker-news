@@ -9,7 +9,7 @@ type Props = {
     type: string,
 };
 
-function Posts({ type }: Props) {
+function PostsType({ type }: Props) {
     const [posts, error] = useFetchMainPosts(type);
 
     if (error !== null) {
@@ -23,4 +23,4 @@ function Posts({ type }: Props) {
     return <PostsList posts={posts} />;
 }
 
-export default Posts;
+export default PostsType;
