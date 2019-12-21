@@ -25,15 +25,14 @@ export function useFetchMainPosts(type) {
     return [posts, error];
 }
 
-export function useFetchUser(location) {
+export function useFetchUser(user) {
     console.log("useFetchUser");
     const [userInfo, setUserInfo] = React.useState(null);
 
     React.useEffect(() => {
-        const user = location.search.split("=")[1];
         fetchUser(user).then(data => setUserInfo(data));
         return () => setUserInfo(null);
-    }, [location]);
+    }, [user]);
 
     return userInfo;
 }

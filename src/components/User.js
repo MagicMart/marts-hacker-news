@@ -12,8 +12,8 @@ function UserPosts(props) {
 }
 
 function User(props) {
-    const location = useLocation();
-    const userInfo = useFetchUser(location);
+    const user = useLocation().search.split("=")[1];
+    const userInfo = useFetchUser(user);
 
     if (!userInfo) {
         return <div>Loading</div>;
