@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
 
 import Posts from "./Posts";
 import User from "./User";
+import Comments from "./Comments";
 
 function App() {
     return (
@@ -28,6 +29,9 @@ function App() {
                     </Route>
                     <Route exact path="/user">
                         <User />
+                    </Route>
+                    <Route exact path="/posts">
+                        <Comments />
                     </Route>
                 </Switch>
             </div>

@@ -1,5 +1,11 @@
 import React from "react";
-import { fetchMainPosts, fetchUser, fetchPosts } from "./api/api";
+import {
+    fetchMainPosts,
+    fetchUser,
+    fetchPosts,
+    fetchItem,
+    fetchComments,
+} from "./api/api";
 
 export function useFetchMainPosts(type) {
     console.log("useFetchMainPosts");
@@ -41,4 +47,26 @@ export function useFetchPosts(ids) {
         return () => setPosts(null);
     }, [ids]);
     return posts;
+}
+
+export function useFetchComments(ids) {
+    console.log("useFetchComments");
+    const [comments, setComments] = React.useState(null);
+
+    React.useEffect(() => {
+        fetchComments(ids).then(data => setComments(data));
+        return () => setComments(null);
+    }, [ids]);
+    return comments;
+}
+
+export function useFetchItem(location) {
+    console.log("useFetchItem");
+    const [item, setItem] = React.useState(null);
+
+    React.useEffect(() => {
+        fetchItem(location).then(data => setItem(data));
+        return () => setItem(null);
+    }, [location]);
+    return item;
 }

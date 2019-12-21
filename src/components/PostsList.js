@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function PostsList({ posts }) {
     return (
         <ul>
-            {posts.map(({ url, title, by, time, descendants }) => (
+            {posts.map(({ url, title, by, time, descendants, id }) => (
                 <li key={title + by}>
                     <a href={url}>
                         <p>{title}</p>
@@ -19,7 +19,16 @@ function PostsList({ posts }) {
                         >
                             {by}
                         </Link>{" "}
-                        on {time}, with {descendants} comments
+                        on {time}, with{" "}
+                        <Link
+                            to={{
+                                pathname: "/posts",
+                                search: `id=${id}`,
+                            }}
+                        >
+                            {descendants}
+                        </Link>{" "}
+                        comments
                     </p>
                 </li>
             ))}
