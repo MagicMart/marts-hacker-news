@@ -1,10 +1,39 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useFetchItem, useFetchComments } from "../customHooks.js";
 
 function Comments(props) {
     const comments = useFetchComments(props.ids);
-    return <div>{JSON.stringify(comments)}</div>;
+
+    if (!comments) {
+        return <p>Loading</p>;
+    }
+
+    return (
+        <div>
+            {comments.map(comment => {
+                const { by, time, id, text } = comment;
+                const createMarkup = () => ({ __html: text });
+                return (
+                    <div>
+                        <p>
+                            by{" "}
+                            <Link
+                                to={{
+                                    pathname: "/user",
+                                    search: `id=${by}`,
+                                }}
+                            >
+                                {by}
+                            </Link>{" "}
+                            on {time}
+                        </p>
+                        <div dangerouslySetInnerHTML={createMarkup()} />
+                    </div>
+                );
+            })}
+        </div>
+    );
 }
 
 function PostWithComments(props) {
