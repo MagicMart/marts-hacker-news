@@ -10,12 +10,12 @@ function Comments(props) {
     }
 
     return (
-        <div>
+        <ul>
             {comments.map(comment => {
                 const { by, time, id, text } = comment;
                 const createMarkup = () => ({ __html: text });
                 return (
-                    <div>
+                    <li key={by + time}>
                         <p>
                             by{" "}
                             <Link
@@ -29,10 +29,10 @@ function Comments(props) {
                             on {time}
                         </p>
                         <div dangerouslySetInnerHTML={createMarkup()} />
-                    </div>
+                    </li>
                 );
             })}
-        </div>
+        </ul>
     );
 }
 
