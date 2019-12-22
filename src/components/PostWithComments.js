@@ -15,7 +15,7 @@ function Comments(props) {
                 const { by, time, id, text } = comment;
                 const createMarkup = () => ({ __html: text });
                 return (
-                    <li key={by + time}>
+                    <li key={id}>
                         <p>
                             by{" "}
                             <Link
@@ -57,14 +57,17 @@ function PostWithComments(props) {
     if (!data) {
         return <div>Loading</div>;
     }
+
     const { id, by, time, text, kids, url, title, descendants } = data;
+    const createMarkup = () => ({ __html: text });
     return (
         <div>
             <h1>{title}</h1>
             <p>
                 by {by} on {time} with {descendants} comments
             </p>
-            <Comments ids={kids} />
+            <div dangerouslySetInnerHTML={createMarkup()} />
+            {kids && <Comments ids={kids} />}
         </div>
     );
 }

@@ -5,10 +5,22 @@ function PostsList({ posts }) {
     return (
         <ul>
             {posts.map(({ url, title, by, time, descendants, id }) => (
-                <li key={title + by}>
-                    <a href={url}>
-                        <p>{title}</p>
-                    </a>
+                <li key={id}>
+                    {url ? (
+                        <a href={url}>
+                            <p>{title}</p>
+                        </a>
+                    ) : (
+                        <Link
+                            to={{
+                                pathname: "/posts",
+                                search: `id=${id}`,
+                            }}
+                        >
+                            {title}
+                        </Link>
+                    )}
+
                     <p>
                         by{" "}
                         <Link
