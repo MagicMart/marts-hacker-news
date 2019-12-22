@@ -19,7 +19,6 @@ export function useFetchMainPosts(type) {
                 setError(error);
                 console.error(error);
             });
-        return () => setPosts(null);
     }, [type]);
 
     return [posts, error];
@@ -31,7 +30,6 @@ export function useFetchUser(user) {
 
     React.useEffect(() => {
         fetchUser(user).then(data => setUserInfo(data));
-        return () => setUserInfo(null);
     }, [user]);
 
     return userInfo;
@@ -43,7 +41,6 @@ export function useFetchPosts(ids) {
 
     React.useEffect(() => {
         fetchPosts(ids).then(data => setPosts(data));
-        return () => setPosts(null);
     }, [ids]);
     return posts;
 }
@@ -54,7 +51,6 @@ export function useFetchComments(ids) {
 
     React.useEffect(() => {
         fetchComments(ids).then(data => setComments(data));
-        return () => setComments(null);
     }, [ids]);
     return comments;
 }
@@ -65,7 +61,6 @@ export function useFetchItem(location) {
 
     React.useEffect(() => {
         fetchItem(location).then(data => setItem(data));
-        return () => setItem(null);
     }, [location]);
     return item;
 }
