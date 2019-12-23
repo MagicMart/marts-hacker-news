@@ -1,3 +1,5 @@
+// @flow
+
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { fetchItem, fetchComments } from "../api/api";
@@ -40,7 +42,7 @@ function Comments(props) {
     );
 }
 
-function PostWithComments(props) {
+function PostWithComments(props: Object) {
     const location = useLocation().search.split("=")[1];
     const [item, setItem] = React.useState(null);
     React.useEffect(() => {
@@ -65,7 +67,7 @@ function PostWithComments(props) {
         return <div>Loading</div>;
     }
 
-    const { id, by, time, text, kids, url, title, descendants } = item;
+    const { by, time, text, kids, title, descendants } = item;
     const createMarkup = () => ({ __html: text });
     return (
         <div>
