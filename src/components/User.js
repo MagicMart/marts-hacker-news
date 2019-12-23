@@ -1,19 +1,28 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useFetchUser, useFetchPosts } from "../customHooks.js";
+import { fetchUser, fetchPosts } from "../api/api";
 import PostsList from "./PostsList";
 
 function UserPosts(props) {
-    const posts = useFetchPosts(props.ids);
+    console.log("render user posts");
+    const [posts, setPosts] = React.useState(null);
+    React.useEffect(() => {
+        fetchPosts(props.ids).then(data => setPosts(data));
+    }, [props.ids]);
     if (!posts) {
         return <div>Loading</div>;
     }
+    console.log(posts);
     return <PostsList posts={posts} />;
 }
 
 function User(props) {
     const user = useLocation().search.split("=")[1];
-    const userInfo = useFetchUser(user);
+    const [userInfo, setUserInfo] = React.useState(null);
+
+    React.useEffect(() => {
+        fetchUser(user).then(data => setUserInfo(data));
+    }, [user]);
 
     if (!userInfo) {
         return <div>Loading</div>;
@@ -33,9 +42,11 @@ function User(props) {
             <p>
                 joined {created} has {karma} karma
             </p>
-            <UserPosts ids={submitted} />
+            {submitted && <UserPosts ids={submitted} />}
         </div>
     );
 }
 
-export default User;
+export default React.memo(User, (prevProps, nextProps) => {
+    return prevProps.id === nextProps.id;
+});

@@ -1,9 +1,13 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import { useFetchItem, useFetchComments } from "../customHooks.js";
+import { fetchItem, fetchComments } from "../api/api";
 
 function Comments(props) {
-    const comments = useFetchComments(props.ids);
+    const [comments, setComments] = React.useState(null);
+
+    React.useEffect(() => {
+        fetchComments(props.ids).then(data => setComments(data));
+    }, [props.ids]);
 
     if (!comments) {
         return <p>Loading</p>;
@@ -38,7 +42,10 @@ function Comments(props) {
 
 function PostWithComments(props) {
     const location = useLocation().search.split("=")[1];
-    const data = useFetchItem(location);
+    const [item, setItem] = React.useState(null);
+    React.useEffect(() => {
+        fetchItem(location).then(data => setItem(data));
+    }, [location]);
 
     // **id** | The item's unique id.
     // deleted | `true` if the item is deleted.
@@ -54,11 +61,11 @@ function PostWithComments(props) {
     // title | The title of the story, poll or job. HTML.
     // parts | A list of related pollopts, in display order.
     // descendants | In the case of stories or polls, the total comment count.
-    if (!data) {
+    if (!item) {
         return <div>Loading</div>;
     }
 
-    const { id, by, time, text, kids, url, title, descendants } = data;
+    const { id, by, time, text, kids, url, title, descendants } = item;
     const createMarkup = () => ({ __html: text });
     return (
         <div>
