@@ -7,7 +7,7 @@ function UserPosts(props) {
     console.log("render user posts");
     const [posts, setPosts] = React.useState(null);
     React.useEffect(() => {
-        fetchPosts(props.ids).then(data => setPosts(data));
+        fetchPosts(props.ids.slice(0, 50)).then(data => setPosts(data));
     }, [props.ids]);
     if (!posts) {
         return <div>Loading</div>;
