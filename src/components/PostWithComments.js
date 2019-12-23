@@ -73,7 +73,16 @@ function PostWithComments(props: Object) {
         <div>
             <h1>{title}</h1>
             <p>
-                by {by} on {time} with {descendants} comments
+                by{" "}
+                <Link
+                    to={{
+                        pathname: "/user",
+                        search: `id=${by}`,
+                    }}
+                >
+                    {by}
+                </Link>{" "}
+                on {time} with {descendants} comments
             </p>
             <div dangerouslySetInnerHTML={createMarkup()} />
             {kids && <Comments ids={kids} />}
