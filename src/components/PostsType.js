@@ -20,6 +20,10 @@ function PostsType({ type }: Props) {
                 setError(error);
                 console.error(error);
             });
+        return () => {
+            setPosts(null);
+            setError(null);
+        };
     }, [type]);
 
     if (error !== null) {

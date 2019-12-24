@@ -9,6 +9,7 @@ function Comments(props) {
 
     React.useEffect(() => {
         fetchComments(props.ids).then(data => setComments(data));
+        return () => setComments(null);
     }, [props.ids]);
 
     if (!comments) {
@@ -47,6 +48,7 @@ function PostWithComments(props: Object) {
     const [item, setItem] = React.useState(null);
     React.useEffect(() => {
         fetchItem(location).then(data => setItem(data));
+        return () => setItem(null);
     }, [location]);
 
     // **id** | The item's unique id.

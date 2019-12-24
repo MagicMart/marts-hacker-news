@@ -8,6 +8,7 @@ function UserPosts(props) {
     const [posts, setPosts] = React.useState(null);
     React.useEffect(() => {
         fetchPosts(props.ids.slice(0, 50)).then(data => setPosts(data));
+        return () => setPosts(null);
     }, [props.ids]);
     if (!posts) {
         return <div>Loading</div>;
@@ -22,6 +23,7 @@ function User(props) {
 
     React.useEffect(() => {
         fetchUser(user).then(data => setUserInfo(data));
+        return () => setUserInfo(null);
     }, [user]);
 
     if (!userInfo) {
@@ -47,6 +49,4 @@ function User(props) {
     );
 }
 
-export default React.memo(User, (prevProps, nextProps) => {
-    return prevProps.id === nextProps.id;
-});
+export default User;
