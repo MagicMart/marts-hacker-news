@@ -14,13 +14,17 @@ function PostsType({ type }: Props) {
     const [error, setError] = React.useState(null);
 
     React.useEffect(() => {
+        let mounted = true;
         fetchMainPosts(type)
-            .then(posts => setPosts(posts))
+            .then(posts => mounted && setPosts(posts))
             .catch(error => {
-                setError(error);
-                console.error(error);
+                if (mounted) {
+                    setError(error);
+                    console.error(error);
+                }
             });
         return () => {
+            mounted = false;
             setPosts(null);
             setError(null);
         };

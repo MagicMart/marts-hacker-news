@@ -8,8 +8,12 @@ function Comments(props) {
     const [comments, setComments] = React.useState(null);
 
     React.useEffect(() => {
-        fetchComments(props.ids).then(data => setComments(data));
-        return () => setComments(null);
+        let mounted = true;
+        fetchComments(props.ids).then(data => mounted && setComments(data));
+        return () => {
+            mounted = false;
+            setComments(null);
+        };
     }, [props.ids]);
 
     if (!comments) {

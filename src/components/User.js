@@ -7,8 +7,14 @@ function UserPosts(props) {
     console.log("render user posts");
     const [posts, setPosts] = React.useState(null);
     React.useEffect(() => {
-        fetchPosts(props.ids.slice(0, 50)).then(data => setPosts(data));
-        return () => setPosts(null);
+        let mounted = true;
+        fetchPosts(props.ids.slice(0, 50)).then(
+            data => mounted && setPosts(data)
+        );
+        return () => {
+            mounted = false;
+            setPosts(null);
+        };
     }, [props.ids]);
     if (!posts) {
         return <div>Loading</div>;
@@ -22,8 +28,12 @@ function User(props) {
     const [userInfo, setUserInfo] = React.useState(null);
 
     React.useEffect(() => {
-        fetchUser(user).then(data => setUserInfo(data));
-        return () => setUserInfo(null);
+        let mounted = true;
+        fetchUser(user).then(data => mounted && setUserInfo(data));
+        return () => {
+            mounted = false;
+            setUserInfo(null);
+        };
     }, [user]);
 
     if (!userInfo) {
