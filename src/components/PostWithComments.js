@@ -3,6 +3,7 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { fetchItem, fetchComments } from "../api/api";
+import Loading from "./Loading";
 
 function Comments(props) {
     const [comments, setComments] = React.useState(null);
@@ -17,7 +18,7 @@ function Comments(props) {
     }, [props.ids]);
 
     if (!comments) {
-        return <p>Loading</p>;
+        return <Loading text={"Loading comments"} />;
     }
 
     return (
@@ -70,7 +71,7 @@ function PostWithComments(props: Object) {
     // parts | A list of related pollopts, in display order.
     // descendants | In the case of stories or polls, the total comment count.
     if (!item) {
-        return <div>Loading</div>;
+        return <Loading />;
     }
 
     const { by, time, text, kids, title, descendants } = item;

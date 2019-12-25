@@ -2,6 +2,7 @@
 
 import React from "react";
 import PostsList from "./PostsList";
+import Loading from "./Loading";
 
 import { fetchMainPosts } from "../api/api";
 
@@ -35,7 +36,7 @@ function PostsType({ type }: Props) {
     }
 
     if (!posts) {
-        return <p>Loading</p>;
+        return <Loading text={`Loading ${type}`} />;
     }
 
     return <PostsList posts={posts} />;

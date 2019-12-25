@@ -1,7 +1,10 @@
+// @flow
+
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { fetchUser, fetchPosts } from "../api/api";
 import PostsList from "./PostsList";
+import Loading from "./Loading";
 
 function UserPosts(props) {
     console.log("render user posts");
@@ -17,13 +20,13 @@ function UserPosts(props) {
         };
     }, [props.ids]);
     if (!posts) {
-        return <div>Loading</div>;
+        return <Loading text={"Loading user posts"} />;
     }
     console.log(posts);
     return <PostsList posts={posts} />;
 }
 
-function User(props) {
+function User() {
     const user = useLocation().search.split("=")[1];
     const [userInfo, setUserInfo] = React.useState(null);
 
@@ -37,7 +40,7 @@ function User(props) {
     }, [user]);
 
     if (!userInfo) {
-        return <div>Loading</div>;
+        return <Loading text={"Loading user"} />;
     }
 
     // created - Creation date of the user, in Unix Time.
