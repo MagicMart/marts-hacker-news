@@ -3,8 +3,8 @@
 import React from "react";
 
 type Props = {
-    text: string,
-    speed: number,
+    text?: string,
+    speed?: number,
 };
 
 function Loading({ text = "Loading", speed = 200 }: Props) {
