@@ -22,6 +22,9 @@ function UserPosts(props) {
     if (!posts) {
         return <Loading text={"Loading user posts"} />;
     }
+    if (posts.length === 0) {
+        return <p>This user hasn't posted yet</p>;
+    }
     console.log(posts);
     return <PostsList posts={posts} />;
 }
