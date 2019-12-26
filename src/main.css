@@ -8,12 +8,53 @@ html {
     box-sizing: inherit;
 }
 
-/* * {
-    border: 1px solid red;
-} */
+html,
+body,
+#app {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
 
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.text-bg {
+    font-size: 1.5rem;
+}
+
+#app {
+    padding: 0.75em;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+ul {
+    list-style-type: none;
+}
+
+nav li {
+    margin: 0 0.5em;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.bold {
+    font-weight: 900;
 }

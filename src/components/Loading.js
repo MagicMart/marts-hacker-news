@@ -5,9 +5,10 @@ import React from "react";
 type Props = {
     text?: string,
     speed?: number,
+    className?: string,
 };
 
-function Loading({ text = "Loading", speed = 200 }: Props) {
+function Loading({ text = "Loading", speed = 200, className = "" }: Props) {
     const [loadingText, setLoadingText] = React.useState(text);
     const timerID = React.useRef(null);
 
@@ -25,7 +26,7 @@ function Loading({ text = "Loading", speed = 200 }: Props) {
         };
     }, [loadingText, text, speed]);
 
-    return <p>{loadingText}</p>;
+    return <p className={className}>{loadingText}</p>;
 }
 
 export default Loading;

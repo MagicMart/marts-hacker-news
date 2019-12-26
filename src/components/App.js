@@ -12,14 +12,16 @@ function App() {
         <Router>
             <div>
                 <h1>Hacker News Clone</h1>
-                <ul>
-                    <li>
-                        <Link to="/">Top</Link>
-                    </li>
-                    <li>
-                        <Link to="/new">New</Link>
-                    </li>
-                </ul>
+                <nav>
+                    <ul className="row bold">
+                        <li>
+                            <Link to="/">Top</Link>
+                        </li>
+                        <li>
+                            <Link to="/new">New</Link>
+                        </li>
+                    </ul>
+                </nav>
                 <Switch>
                     <Route exact path="/">
                         <PostsType type="top" />

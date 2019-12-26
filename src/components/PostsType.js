@@ -36,7 +36,12 @@ function PostsType({ type }: Props) {
     }
 
     if (!posts) {
-        return <Loading text={`Loading ${type}`} />;
+        return (
+            <Loading
+                className="text-align-center text-bg"
+                text={`Loading ${type}`}
+            />
+        );
     }
 
     return <PostsList posts={posts} />;
