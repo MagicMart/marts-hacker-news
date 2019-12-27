@@ -9,8 +9,7 @@ html {
 }
 
 html,
-body,
-#app {
+body {
     margin: 0;
     height: 100%;
     width: 100%;
@@ -19,19 +18,23 @@ body,
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1rem;
-    line-height: 1.5;
 }
 
-.text-align-center {
-    text-align: center;
+.container {
+    max-width: 1026px;
+    margin: 0 auto;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
-.text-bg {
+h1 {
     font-size: 1.5rem;
+    margin: 0.5em;
 }
 
-#app {
-    padding: 0.75em;
+h2 {
+    background: #dddcdc;
+    margin: 0.5em 0;
 }
 
 .row {
@@ -39,12 +42,23 @@ body {
     flex-direction: row;
 }
 
-.space-between {
-    justify-content: space-between;
-}
-
 ul {
     list-style-type: none;
+    margin: 0;
+    padding: 5px;
+}
+
+@media (min-width: 400px) {
+    ul {
+        padding: 0 0 0 40px;
+    }
+}
+
+.nav {
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 900;
 }
 
 nav li {
@@ -55,6 +69,21 @@ nav a {
     text-decoration: none;
 }
 
-.bold {
+.user-link {
+    color: black;
+}
+
+.title {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+li > p {
+    margin: 0.5em;
+}
+
+.loading {
+    text-align: center;
+    font-size: 1.5rem;
     font-weight: 900;
 }

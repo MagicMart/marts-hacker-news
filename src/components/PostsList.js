@@ -13,11 +13,12 @@ function PostsList({ posts }: Props) {
             {posts.map(({ url, title, by, time, descendants, id }) => (
                 <li key={id}>
                     {url ? (
-                        <a href={url}>
-                            <p>{title}</p>
+                        <a className="title" href={url}>
+                            {title}
                         </a>
                     ) : (
                         <Link
+                            className="title"
                             to={{
                                 pathname: "/posts",
                                 search: `id=${id}`,
@@ -30,6 +31,7 @@ function PostsList({ posts }: Props) {
                     <p>
                         by{" "}
                         <Link
+                            className="user-link"
                             to={{
                                 pathname: "/user",
                                 search: `id=${by}`,
@@ -39,6 +41,7 @@ function PostsList({ posts }: Props) {
                         </Link>{" "}
                         on {time}, with{" "}
                         <Link
+                            className="user-link"
                             to={{
                                 pathname: "/posts",
                                 search: `id=${id}`,

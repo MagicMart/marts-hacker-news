@@ -8,7 +8,11 @@ type Props = {
     className?: string,
 };
 
-function Loading({ text = "Loading", speed = 200, className = "" }: Props) {
+function Loading({
+    text = "Loading",
+    speed = 200,
+    className = "loading",
+}: Props) {
     const [loadingText, setLoadingText] = React.useState(text);
     const timerID = React.useRef(null);
 

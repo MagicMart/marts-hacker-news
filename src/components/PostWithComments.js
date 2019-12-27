@@ -74,11 +74,15 @@ function PostWithComments(props: Object) {
         return <Loading />;
     }
 
-    const { by, time, text, kids, title, descendants } = item;
+    const { by, time, text, kids, title, descendants, url } = item;
     const createMarkup = () => ({ __html: text });
     return (
         <div>
-            <h1>{title}</h1>
+            <h2>
+                <a className="title" href={url}>
+                    {title}
+                </a>
+            </h2>
             <p>
                 by{" "}
                 <Link

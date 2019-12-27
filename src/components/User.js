@@ -56,7 +56,7 @@ function User() {
 
     return (
         <div>
-            <h1>{id}</h1>
+            <h2>{id}</h2>
             <p>
                 joined {created} has {karma} karma
             </p>

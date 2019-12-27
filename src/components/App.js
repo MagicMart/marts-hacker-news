@@ -1,26 +1,41 @@
 // @flow
 
 import React from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    NavLink,
+    Route,
+    Switch,
+} from "react-router-dom";
 
 import PostsType from "./PostsType";
 import User from "./User";
 import PostWithComments from "./PostWithComments";
+import { FaMoon, FaSun } from "react-icons/fa";
+
+const activeStyle = {
+    color: "red",
+};
 
 function App() {
     return (
         <Router>
-            <div>
-                <h1>Hacker News Clone</h1>
-                <nav>
-                    <ul className="row bold">
+            <div className="container">
+                <h1>From Hacker News</h1>
+                <nav className="nav row">
+                    <ul className="row">
                         <li>
-                            <Link to="/">Top</Link>
+                            <NavLink exact activeStyle={activeStyle} to="/">
+                                Top
+                            </NavLink>
                         </li>
                         <li>
-                            <Link to="/new">New</Link>
+                            <NavLink activeStyle={activeStyle} to="/new">
+                                New
+                            </NavLink>
                         </li>
                     </ul>
+                    <FaSun color={"yellow"} size={"48px"} />
                 </nav>
                 <Switch>
                     <Route exact path="/">
