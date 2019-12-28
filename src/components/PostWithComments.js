@@ -14,7 +14,6 @@ function Comments(props) {
         fetchComments(props.ids).then(data => mounted && setComments(data));
         return () => {
             mounted = false;
-            setComments(null);
         };
     }, [props.ids]);
 
@@ -52,9 +51,13 @@ function Comments(props) {
 function PostWithComments(props: Object) {
     const location = useLocation().search.split("=")[1];
     const [item, setItem] = React.useState(null);
+
     React.useEffect(() => {
-        fetchItem(location).then(data => setItem(data));
-        return () => setItem(null);
+        let mounted = true;
+        fetchItem(location).then(data => mounted && setItem(data));
+        return () => {
+            mounted = false;
+        };
     }, [location]);
 
     // **id** | The item's unique id.

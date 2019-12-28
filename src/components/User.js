@@ -17,7 +17,6 @@ function UserPosts(props) {
         );
         return () => {
             mounted = false;
-            setPosts(null);
         };
     }, [props.ids]);
     if (!posts) {
@@ -39,7 +38,6 @@ function User() {
         fetchUser(user).then(data => mounted && setUserInfo(data));
         return () => {
             mounted = false;
-            setUserInfo(null);
         };
     }, [user]);
 

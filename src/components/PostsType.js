@@ -21,7 +21,6 @@ function PostsType({ type }: Props) {
             .catch(error => {
                 if (mounted) {
                     setError(error);
-                    console.error(error);
                 }
             });
         return () => {
