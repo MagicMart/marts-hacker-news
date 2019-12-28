@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { fetchUser, fetchPosts } from "../api/api";
 import PostsList from "./PostsList";
 import Loading from "./Loading";
+import { formatTime } from "../helpers";
 
 function UserPosts(props) {
     console.log("render user posts");
@@ -58,7 +59,7 @@ function User() {
         <div>
             <h2>{id}</h2>
             <p>
-                joined {created} has {karma} karma
+                joined {formatTime(created)} has {karma} karma
             </p>
             {submitted && <UserPosts ids={submitted} />}
         </div>

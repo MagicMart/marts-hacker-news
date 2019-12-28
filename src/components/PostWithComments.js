@@ -4,6 +4,7 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { fetchItem, fetchComments } from "../api/api";
 import Loading from "./Loading";
+import { formatTime } from "../helpers";
 
 function Comments(props) {
     const [comments, setComments] = React.useState(null);
@@ -38,7 +39,7 @@ function Comments(props) {
                             >
                                 {by}
                             </Link>{" "}
-                            on {time}
+                            on {formatTime(time)}
                         </p>
                         <div dangerouslySetInnerHTML={createMarkup()} />
                     </li>
@@ -93,7 +94,7 @@ function PostWithComments(props: Object) {
                 >
                     {by}
                 </Link>{" "}
-                on {time} with {descendants} comments
+                on {formatTime(time)} with {descendants} comments
             </p>
             <div dangerouslySetInnerHTML={createMarkup()} />
             {kids && <Comments ids={kids} />}

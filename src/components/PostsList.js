@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
+import { formatTime } from "../helpers";
 
 type Props = {
     posts: Object,
@@ -39,7 +40,7 @@ function PostsList({ posts }: Props) {
                         >
                             {by}
                         </Link>{" "}
-                        on {time}, with{" "}
+                        on {formatTime(time)}, with{" "}
                         <Link
                             className="user-link"
                             to={{
