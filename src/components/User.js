@@ -51,7 +51,8 @@ function User() {
     // submitted - List of the user's stories, polls and comments.
     // about - The user's optional self-description. HTML.
 
-    const { created, id, karma, submitted } = userInfo;
+    const { created, id, karma, submitted, about } = userInfo;
+    const createMarkup = () => ({ __html: about });
 
     return (
         <div>
@@ -59,6 +60,8 @@ function User() {
             <p>
                 joined {formatTime(created)} has {karma} karma
             </p>
+            <div dangerouslySetInnerHTML={createMarkup()} />
+            <hr />
             {submitted && <UserPosts ids={submitted} />}
         </div>
     );
