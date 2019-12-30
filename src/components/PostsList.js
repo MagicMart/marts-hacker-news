@@ -3,23 +3,25 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { formatTime } from "../helpers";
+import { Theme } from "../contexts/theme";
 
 type Props = {
     posts: Object,
 };
 
 function PostsList({ posts }: Props) {
+    const { theme } = React.useContext(Theme);
     return (
         <ul>
             {posts.map(({ url, title, by, time, descendants, id }) => (
                 <li key={id}>
                     {url ? (
-                        <a className="title" href={url}>
+                        <a className={`title-${theme}`} href={url}>
                             {title}
                         </a>
                     ) : (
                         <Link
-                            className="title"
+                            className={`title-${theme}`}
                             to={{
                                 pathname: "/posts",
                                 search: `id=${id}`,

@@ -6,15 +6,23 @@ import styled from "styled-components";
 import { fetchItem, fetchComments } from "../api/api";
 import Loading from "./Loading";
 import { formatTime } from "../helpers";
+import { Theme } from "../contexts/theme";
 
 const StyledListItem = styled.li`
-    background: #ded0ce;
+    background: ${({ theme }) =>
+        theme === "light"
+            ? "rgba(128, 128, 128, 0.1411764705882353)"
+            : "#1c2022"};
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
+    a {
+        color: ${({ theme }) => (theme === "light" ? "black" : "white")};
+    }
 `;
 
 function Comments(props) {
     const [comments, setComments] = React.useState(null);
+    const { theme } = props;
 
     React.useEffect(() => {
         let mounted = true;
@@ -34,7 +42,7 @@ function Comments(props) {
                 const { by, time, id, text } = comment;
                 const createMarkup = () => ({ __html: text });
                 return (
-                    <StyledListItem key={id}>
+                    <StyledListItem theme={theme} key={id}>
                         <p>
                             by{" "}
                             <Link
@@ -56,6 +64,7 @@ function Comments(props) {
 }
 
 function PostWithComments(props: Object) {
+    const { theme } = React.useContext(Theme);
     const location = useLocation().search.split("=")[1];
     const [item, setItem] = React.useState(null);
 
@@ -67,20 +76,6 @@ function PostWithComments(props: Object) {
         };
     }, [location]);
 
-    // **id** | The item's unique id.
-    // deleted | `true` if the item is deleted.
-    // type | The type of item. One of "job", "story", "comment", "poll", or "pollopt".
-    // by | The username of the item's author.
-    // time | Creation date of the item, in [Unix Time](http://en.wikipedia.org/wiki/Unix_time).
-    // text | The comment, story or poll text. HTML.
-    // parent | The comment's parent: either another comment or the relevant story.
-    // poll | The pollopt's associated poll.
-    // kids | The ids of the item's comments, in ranked display order.
-    // url | The URL of the story.
-    // score | The story's score, or the votes for a pollopt.
-    // title | The title of the story, poll or job. HTML.
-    // parts | A list of related pollopts, in display order.
-    // descendants | In the case of stories or polls, the total comment count.
     if (!item) {
         return <Loading />;
     }
@@ -90,7 +85,7 @@ function PostWithComments(props: Object) {
     return (
         <div>
             <h2>
-                <a className="title" href={url}>
+                <a className={`title-${theme}`} href={url}>
                     {title}
                 </a>
             </h2>
@@ -108,7 +103,7 @@ function PostWithComments(props: Object) {
                 on {formatTime(time)} with {descendants} comments
             </p>
             <div dangerouslySetInnerHTML={createMarkup()} />
-            {kids && <Comments ids={kids} />}
+            {kids && <Comments ids={kids} theme={theme} />}
         </div>
     );
 }
