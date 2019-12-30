@@ -31,6 +31,12 @@ const Container = styled.div`
     .title {
         color: ${({ theme }) => (theme === "light" ? "red" : "yellow")};
     }
+    h1 {
+        font-size: 1rem;
+        background: ${({ theme }) => (theme === "light" ? "white" : "#413b3b")};
+        margin: 0;
+        padding: 5px;
+    }
 `;
 
 const StyledNav = styled.nav`
