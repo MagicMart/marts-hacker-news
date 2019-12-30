@@ -24,6 +24,13 @@ const Container = styled.div`
     margin: 0 auto;
     padding-left: 5px;
     padding-right: 5px;
+    a {
+        color: ${({ theme }) => (theme === "light" ? "black" : "yellow")};
+        font-weight: 600;
+    }
+    .title {
+        color: ${({ theme }) => (theme === "light" ? "red" : "yellow")};
+    }
 `;
 
 const StyledNav = styled.nav`
@@ -55,7 +62,7 @@ function App() {
     return (
         <Router>
             <div className={theme}>
-                <Container>
+                <Container theme={theme}>
                     <h1>From Hacker News</h1>
                     <StyledNav>
                         <ul className="row">

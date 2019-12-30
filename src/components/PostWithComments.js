@@ -15,9 +15,6 @@ const StyledListItem = styled.li`
             : "#1c2022"};
     padding: 5px;
     margin: 10px;
-    a {
-        color: ${({ theme }) => (theme === "light" ? "black" : "white")};
-    }
 `;
 
 function Comments(props) {
@@ -85,7 +82,7 @@ function PostWithComments(props: Object) {
     return (
         <div>
             <h2>
-                <a className={`title-${theme}`} href={url}>
+                <a className="title" href={url}>
                     {title}
                 </a>
             </h2>
