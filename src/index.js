@@ -1,5 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
+import ThemeProvider from "./contexts/theme";
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(
+    <ThemeProvider>
+        <App />
+    </ThemeProvider>,
+    document.getElementById("app")
+);

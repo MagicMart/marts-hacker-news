@@ -2,9 +2,16 @@
 
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
+import styled from "styled-components";
 import { fetchItem, fetchComments } from "../api/api";
 import Loading from "./Loading";
 import { formatTime } from "../helpers";
+
+const StyledListItem = styled.li`
+    background: #ded0ce;
+    padding: 5px;
+    margin: 5px;
+`;
 
 function Comments(props) {
     const [comments, setComments] = React.useState(null);
@@ -27,7 +34,7 @@ function Comments(props) {
                 const { by, time, id, text } = comment;
                 const createMarkup = () => ({ __html: text });
                 return (
-                    <li key={id}>
+                    <StyledListItem key={id}>
                         <p>
                             by{" "}
                             <Link
@@ -41,7 +48,7 @@ function Comments(props) {
                             on {formatTime(time)}
                         </p>
                         <div dangerouslySetInnerHTML={createMarkup()} />
-                    </li>
+                    </StyledListItem>
                 );
             })}
         </ul>
@@ -90,6 +97,7 @@ function PostWithComments(props: Object) {
             <p>
                 by{" "}
                 <Link
+                    className="user-link"
                     to={{
                         pathname: "/user",
                         search: `id=${by}`,
