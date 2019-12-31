@@ -49,7 +49,7 @@ const StyledNav = styled.nav`
         margin: 0 0.5em;
     }
     a {
-        color: black;
+        color: ${({ theme }) => (theme === "light" ? "black" : "white")};
         text-decoration: none;
     }
 `;
@@ -70,7 +70,7 @@ function App() {
             <div className={theme}>
                 <Container theme={theme}>
                     <h1>From Hacker News</h1>
-                    <StyledNav>
+                    <StyledNav theme={theme}>
                         <ul className="row">
                             <li>
                                 <NavLink exact activeStyle={activeStyle} to="/">
