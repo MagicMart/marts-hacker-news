@@ -14,9 +14,10 @@ function Loading({
     className = "loading",
 }: Props) {
     const [loadingText, setLoadingText] = React.useState(text);
+    const timerID = React.useRef();
 
     React.useEffect(() => {
-        const timerID = window.setInterval(() => {
+        timerID.current = window.setTimeout(() => {
             setLoadingText(state => {
                 if (state !== `${text}...`) {
                     return state + ".";
@@ -27,9 +28,9 @@ function Loading({
         }, speed);
 
         return () => {
-            window.clearInterval(timerID);
+            window.clearTimeout(timerID.current);
         };
-    }, [text, speed]);
+    }, [loadingText, text, speed]);
 
     return <p className={className}>{loadingText}</p>;
 }
