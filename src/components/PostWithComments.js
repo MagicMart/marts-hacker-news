@@ -12,7 +12,7 @@ const StyledListItem = styled.li`
     background: ${({ theme }) =>
         theme === "light"
             ? "rgba(128, 128, 128, 0.1411764705882353)"
-            : "#1c2022"};
+            : "#3a5461"};
     padding: 5px;
     margin: 10px;
 `;
