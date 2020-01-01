@@ -1,8 +1,14 @@
+// @flow
+
 import React from "react";
 
-export const Theme = React.createContext();
+export const Theme = React.createContext<Object>();
 
-function ThemeProvider({ children }) {
+type Props = {
+    children: Object,
+};
+
+function ThemeProvider({ children }: Props) {
     const [theme, toggleTheme] = React.useState("light");
     return (
         <Theme.Provider value={{ theme, toggleTheme }}>
