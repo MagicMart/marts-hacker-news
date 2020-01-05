@@ -69,7 +69,9 @@ function App() {
         <Router>
             <div className={theme}>
                 <Container theme={theme}>
-                    <h1>From Hacker News</h1>
+                    <h1>
+                        <i>from</i> Hacker News
+                    </h1>
                     <StyledNav theme={theme}>
                         <ul className="row">
                             <li>
