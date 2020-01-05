@@ -29,7 +29,7 @@ const Container = styled.div`
         font-weight: 600;
     }
     .title {
-        color: ${({ theme }) => (theme === "light" ? "red" : "yellow")};
+        color: ${({ theme }) => (theme === "light" ? "#880303" : "yellow")};
     }
     h1 {
         font-size: 1rem;
@@ -56,9 +56,9 @@ const StyledNav = styled.nav`
 
 function ThemeIcon(props) {
     if (props.theme === "light") {
-        return <FaSun {...props} />;
+        return <FaSun color={"#a1a12f"} {...props} />;
     } else {
-        return <FaMoon {...props} />;
+        return <FaMoon color={"yellow"} {...props} />;
     }
 }
 
@@ -92,7 +92,6 @@ function App() {
                                     state === "light" ? "dark" : "light"
                                 );
                             }}
-                            color={"yellow"}
                             size={"48px"}
                         />
                     </StyledNav>
