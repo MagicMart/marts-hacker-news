@@ -99,13 +99,13 @@ function App() {
                         <Route exact path="/">
                             <PostsType type="top" />
                         </Route>
-                        <Route exact path="/new">
+                        <Route path="/new">
                             <PostsType type="new" />
                         </Route>
-                        <Route exact path="/user">
+                        <Route path="/user">
                             <User />
                         </Route>
-                        <Route exact path="/posts">
+                        <Route path="/posts">
                             <PostWithComments />
                         </Route>
                     </Switch>
