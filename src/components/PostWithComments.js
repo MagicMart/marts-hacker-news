@@ -9,10 +9,7 @@ import { formatTime } from "../helpers";
 import { Theme } from "../contexts/theme";
 
 const StyledListItem = styled.li`
-    background: ${({ theme }) =>
-        theme === "light"
-            ? "rgba(128, 128, 128, 0.1411764705882353)"
-            : "#3a5461"};
+    background: rgba(128, 128, 128, 0.1411764705882353);
     padding: 5px;
     margin: 10px;
 `;
@@ -43,6 +40,7 @@ function Comments(props) {
                         <p>
                             by{" "}
                             <Link
+                                className="user-link"
                                 to={{
                                     pathname: "/user",
                                     search: `id=${by}`,
@@ -82,7 +80,7 @@ function PostWithComments(props: Object) {
     return (
         <div>
             <h2>
-                <a className="title" href={url}>
+                <a className="article-link" href={url}>
                     {title}
                 </a>
             </h2>

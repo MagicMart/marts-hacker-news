@@ -15,21 +15,19 @@ import PostWithComments from "./PostWithComments";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Theme } from "../contexts/theme";
 
-const activeStyle = {
-    color: "red",
-};
-
 const Container = styled.div`
     max-width: 1026px;
     margin: 0 auto;
     padding-left: 5px;
     padding-right: 5px;
-    a {
+    .user-link,
+    .comments-link {
         color: ${({ theme }) => (theme === "light" ? "black" : "yellow")};
         font-weight: 600;
     }
-    .title {
+    .article-link {
         color: ${({ theme }) => (theme === "light" ? "#880303" : "yellow")};
+        font-weight: 600;
     }
     h1 {
         font-size: 1rem;
@@ -48,9 +46,13 @@ const StyledNav = styled.nav`
     li {
         margin: 0 0.5em;
     }
-    a {
-        color: ${({ theme }) => (theme === "light" ? "black" : "white")};
-        text-decoration: none;
+`;
+
+const StyledNavLink = styled(NavLink)`
+    color: ${({ theme }) => (theme === "light" ? "black" : "white")};
+    text-decoration: none;
+    &.active {
+        color: ${({ theme }) => (theme === "light" ? "red" : "#ff9800")};
     }
 `;
 
@@ -75,14 +77,14 @@ function App() {
                     <StyledNav theme={theme}>
                         <ul className="row">
                             <li>
-                                <NavLink exact activeStyle={activeStyle} to="/">
+                                <StyledNavLink theme={theme} exact to="/">
                                     Top
-                                </NavLink>
+                                </StyledNavLink>
                             </li>
                             <li>
-                                <NavLink activeStyle={activeStyle} to="/new">
+                                <StyledNavLink theme={theme} to="/new">
                                     New
-                                </NavLink>
+                                </StyledNavLink>
                             </li>
                         </ul>
                         <ThemeIcon
