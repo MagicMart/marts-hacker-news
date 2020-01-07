@@ -19,7 +19,7 @@ const StyledListItem = styled.li`
 
 function Comments(props) {
     const [comments, setComments] = React.useState(null);
-    const { theme } = props;
+    const { theme } = React.useContext(Theme);
 
     React.useEffect(() => {
         let mounted = true;
@@ -62,7 +62,6 @@ function Comments(props) {
 }
 
 function PostWithComments(props: Object) {
-    const { theme } = React.useContext(Theme);
     const location = useLocation().search.split("=")[1];
     const [item, setItem] = React.useState(null);
 
@@ -101,7 +100,7 @@ function PostWithComments(props: Object) {
                 on {formatTime(time)} with {descendants} comments
             </p>
             <div dangerouslySetInnerHTML={createMarkup()} />
-            {kids && <Comments ids={kids} theme={theme} />}
+            {kids && <Comments ids={kids} />}
         </div>
     );
 }
