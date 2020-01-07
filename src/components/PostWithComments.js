@@ -12,6 +12,9 @@ const StyledListItem = styled.li`
     background: rgba(128, 128, 128, 0.1411764705882353);
     padding: 5px;
     margin: 10px;
+    a {
+        color: ${({ theme }) => (theme === "light" ? "revert" : "yellow")};
+    }
 `;
 
 function Comments(props) {
