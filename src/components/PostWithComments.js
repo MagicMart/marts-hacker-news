@@ -10,6 +10,7 @@ import { Theme } from "../contexts/theme";
 
 const StyledListItem = styled.li`
     background: rgba(128, 128, 128, 0.1411764705882353);
+    border: 1px solid #ffdead;
     padding: 5px;
     margin: 10px;
     a {
