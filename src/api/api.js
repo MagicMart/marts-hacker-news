@@ -20,7 +20,6 @@ function onlyPosts(posts) {
 }
 
 export function fetchItem(id: string) {
-    console.log("fetchItem");
     return fetch(`${api}/item/${id}${json}`).then(res => res.json());
 }
 

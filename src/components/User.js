@@ -8,7 +8,6 @@ import Loading from "./Loading";
 import { formatTime } from "../helpers";
 
 function UserPosts(props) {
-    console.log("render user posts");
     const [posts, setPosts] = React.useState(null);
     React.useEffect(() => {
         let mounted = true;
@@ -25,7 +24,6 @@ function UserPosts(props) {
     if (posts.length === 0) {
         return <p>This user hasn't posted yet</p>;
     }
-    console.log(posts);
     return <PostsList posts={posts} />;
 }
 
