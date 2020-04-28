@@ -31,7 +31,7 @@ function Comments(props) {
     }, [props.ids]);
 
     if (!comments) {
-        return <Loading text={"Loading comments"} />;
+        return <Loading text={"Comments"} />;
     }
 
     return (

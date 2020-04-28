@@ -19,7 +19,7 @@ function UserPosts(props) {
         };
     }, [props.ids]);
     if (!posts) {
-        return <Loading text={"Loading user posts"} />;
+        return <Loading text={"User posts"} />;
     }
     if (posts.length === 0) {
         return <p>This user hasn't posted yet</p>;
@@ -40,7 +40,7 @@ function User() {
     }, [user]);
 
     if (!userInfo) {
-        return <Loading text={"Loading user"} />;
+        return <Loading text={"User"} />;
     }
 
     // created - Creation date of the user, in Unix Time.
